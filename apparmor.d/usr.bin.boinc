@@ -1,0 +1,49 @@
+# AppArmor profile for BOINC
+# Author: Matthias Geerdsen <matthias@vorlons.info>
+#
+
+#include <tunables/global>
+
+/usr/bin/boinc {
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  capability sys_ptrace,
+
+  /usr/bin/boinc rix,
+  /var/lib/boinc-client/ r,
+  /var/lib/boinc-client/** rwkix,
+  /etc/boinc-client/* rw,
+
+  /tmp/.X11-unix/ r,
+  /dev/pts/ r,
+  /proc/interrupts r,
+  /dev/ r,
+  /proc/ r,
+  /proc/*/stat r,
+  /dev/input/ r,
+
+  /lib/ r,
+  /lib32/ r,
+  /usr/lib/ r,
+  /usr/lib32/ r,
+
+  /bin/dash rix,
+  /bin/uname rix,
+  /usr/bin/file ix,
+  /etc/magic r,
+  /sys/class/power_supply/ r,
+
+  /usr/bin/VBox rix,
+  /bin/readlink ix,
+  /usr/bin/basename ix,
+  /bin/rm ix,
+  /bin/ps ix,
+  /bin/grep ix,
+  /usr/bin/whoami ix,
+  /usr/bin/gawk ix,
+  /bin/cat ix,
+  /bin/kmod ix,
+  /bin/grep ix,
+}
