@@ -1,0 +1,19 @@
+#include <tunables/global>
+
+/usr/bin/prosody {
+  #include <abstractions/base>
+  #include <abstractions/mysql>
+  #include <abstractions/nameservice>
+
+  /etc/prosody/** r,
+  /home/matthias/prosody-modules/** r,
+  /run/prosody/* rwk,
+  /usr/bin/prosody r,
+  /usr/lib{,32,64}/** mr,
+  /usr/share/lua/** r,
+  /var/lib/prosody/** rw,
+  /var/log/prosody/* rw,
+  /etc/mime.types r,
+#  /etc/ssl/private/your_private_key.pem r,
+#  /etc/ssl/certs/your_public_cert.pem r,
+}
